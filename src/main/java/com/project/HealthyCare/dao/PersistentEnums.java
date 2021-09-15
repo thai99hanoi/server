@@ -1,6 +1,7 @@
 package com.project.HealthyCare.dao;
 
-import jdk.internal.access.SharedSecrets;
+
+import sun.misc.SharedSecrets;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

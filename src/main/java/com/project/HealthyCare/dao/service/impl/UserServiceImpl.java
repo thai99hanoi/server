@@ -1,10 +1,10 @@
-package com.project.HealthyCare.dao.service;
+package com.project.HealthyCare.dao.service.impl;
 
 import com.project.HealthyCare.dao.entity.Role;
 import com.project.HealthyCare.dao.entity.User;
+import com.project.HealthyCare.dao.service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -24,14 +24,14 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserRepository> imple
     private UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username, String password) throws UsernameNotFoundException {
         try{
-            User user = userRepository.findUserByUsername(username);
+            User user = userRepository.findUserByUsername(username, password);
             if(user == null){
                 throw new UsernameNotFoundException("User not found");
             }
             return new org.springframework.security.core.userdetails.User(
-                    user.getEmail(), "$2a$16$AYSTH/JEPXPwqYBRswLq0emwmItvsQgf.dnaffXGJpvYML97bBoGe", new ArrayList<>());
+                    user.getUsername(), password, new ArrayList<>());
 
         }
         catch (Exception ex){
@@ -39,8 +39,8 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserRepository> imple
         }
     }
 
-    public User getUserByUsername (String username ) {
-        return userRepository.findUserByUsername(username);
+    public User getUserByUsername (String username, String password ) {
+        return userRepository.findUserByUsername(username, password);
     }
 
 }

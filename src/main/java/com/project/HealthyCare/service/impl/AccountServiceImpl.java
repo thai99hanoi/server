@@ -11,8 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class AccountServiceImpl extends BaseServiceImpl<User, UserRepository> {
@@ -26,6 +26,10 @@ public class AccountServiceImpl extends BaseServiceImpl<User, UserRepository> {
         super(repository);
     }
 
+    /**
+     * @Description: get current user
+     * @return
+     */
     public ServiceResponse<User> getCurrentUser() {
         try {
             String currentUserName = "";
@@ -42,6 +46,58 @@ public class AccountServiceImpl extends BaseServiceImpl<User, UserRepository> {
         } catch (Exception e) {
             logger.error("Exception: ", e);
             return new ServiceResponse<User>(MessageCode.FAILED, null);
+        }
+    }
+
+    /**
+     * @Description: check username is exist in database
+     * @param username
+     * @return
+     */
+    public ServiceResponse<Boolean> checkUsername(String username){
+        Integer count = 0;
+        try{
+            count = userRepository.checkUsername(username);
+            if(count > 0){
+                return new ServiceResponse<Boolean>(MessageCode.FAILED, false);
+            } else {
+                return new ServiceResponse<Boolean>(MessageCode.SUCCESS, true);
+            }
+        }catch (Exception ex){
+            logger.error("Exception: ", ex);
+            return new ServiceResponse<Boolean>(MessageCode.FAILED, false);
+        }
+    }
+
+    /**
+     * @Description: update user
+     * @param user
+     * @return
+     */
+    public ServiceResponse<User> updateUser(User user){
+        User userExist = userRepository.findByUsername(user.getUsername());
+        if(userExist != null){
+            userExist.setEmail(user.getEmail());
+            userExist.setPhone(user.getPhone());
+            userRepository.save(userExist);
+            return new ServiceResponse<User>(MessageCode.SUCCESS, userExist);
+        } else {
+            return new ServiceResponse<User>(MessageCode.FAILED, null);
+        }
+    }
+
+    /**
+     * @Description: delete user
+     * @param userId
+     * @return
+     */
+    public ServiceResponse<Boolean> deleteUser(int userId){
+        try{
+            userRepository.deleteUser(userId);
+            return new ServiceResponse<Boolean>(MessageCode.SUCCESS, true);
+        } catch (Exception ex){
+            logger.error("Exception: ", ex);
+            return new ServiceResponse<Boolean>(MessageCode.FAILED, false);
         }
     }
 }

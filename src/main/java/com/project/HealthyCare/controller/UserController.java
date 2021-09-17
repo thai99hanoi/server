@@ -5,7 +5,10 @@ import com.project.HealthyCare.entity.User;
 import com.project.HealthyCare.service.impl.AccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,5 +20,15 @@ public class UserController {
     @GetMapping("/current-user")
     public ServiceResponse<User> getCurrentUser(){
         return userService.getCurrentUser();
+    }
+
+    @PostMapping("/update")
+    public ServiceResponse<User> updateUser(@RequestBody User user){
+        return userService.updateUser(user);
+    }
+
+    @PostMapping("/delete")
+    public ServiceResponse<Boolean> deleteUser(@RequestParam("userId") int userId){
+        return userService.deleteUser(userId);
     }
 }

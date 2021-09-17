@@ -19,4 +19,12 @@ public interface UserRepository extends BaseRepository<User> {
     @Query(value = "SELECT * FROM user\n" +
             "where username = :username", nativeQuery = true)
     User findByUsername(@Param("username") String username);
+
+    @Transactional
+    @Query(value = "select count(*) from user \r\n" + "where username = :username" + " and is_active = 1", nativeQuery = true)
+    Integer checkUsername(@Param("username") String username);
+
+    @Transactional
+    @Query(value = "UPDATE user SET is_active = 0 WHERE user_id = :userId and is_active = 1",nativeQuery = true)
+    void deleteUser(@Param("userId") int userId);
 }

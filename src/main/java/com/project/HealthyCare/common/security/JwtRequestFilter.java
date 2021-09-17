@@ -12,12 +12,11 @@ import com.project.HealthyCare.dao.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.project.HealthyCare.dao.service.UserServiceImpl;
+import com.project.HealthyCare.dao.service.impl.UserServiceImpl;
 
 import io.jsonwebtoken.ExpiredJwtException;
 
@@ -34,6 +33,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         final String requestTokenHeader = request.getHeader("Authorization");
         String username = null;
         String jwtToken = null;
+        String password = null;
 
         if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
             jwtToken = requestTokenHeader.substring(7);
@@ -48,9 +48,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             logger.warn("JWT Token does not begin with Bearer String");
         }
 
-        if (username != null) {
+        if (username != null && password != null) {
 
-            User user = this.userService.getUserByUsername(username);
+            User user = this.userService.getUserByUsername(username, password);
 
             // if token is valid configure Spring Security to manually set
             // authentication

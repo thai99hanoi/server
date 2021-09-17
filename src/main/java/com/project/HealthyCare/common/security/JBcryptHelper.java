@@ -1,6 +1,6 @@
 package com.project.HealthyCare.common.security;
 
-import com.project.HealthyCare.dao.service.UserServiceImpl;
+import com.project.HealthyCare.dao.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Component;

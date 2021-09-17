@@ -13,6 +13,6 @@ import javax.transaction.Transactional;
 public interface UserRepository extends BaseRepository<User> {
     @Transactional
     @Query(value = "SELECT * FROM user\n" +
-            "where username = :username", nativeQuery = true)
-    User findUserByUsername(@Param("username") String username);
+            "where username = :username and password = :password", nativeQuery = true)
+    User findUserByUsername(@Param("username") String username, @Param("password") String password);
 }

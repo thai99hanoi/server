@@ -35,7 +35,7 @@ public class JwtTokenUtil implements Serializable {
     @Autowired
     private Environment env;
 
-    public String generateTokenLogin(String username) {
+    public String generateTokenLogin(String username, String password) {
         String token =null;
         try {
             JWSSigner signer = new MACSigner(generateShareSecret());
@@ -110,7 +110,7 @@ public class JwtTokenUtil implements Serializable {
         return 1;
     }
 
-    private Date getExpirationDateFromToken(String token) {
+    public Date getExpirationDateFromToken(String token) {
         Date expiration = null;
         JWTClaimsSet claimsSet = getClaimsFromToken(token);
         return expiration = claimsSet.getExpirationTime();

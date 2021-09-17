@@ -9,9 +9,9 @@ import java.util.Date;
 public class JwtResponse implements Serializable {
     private static final long serialVersionUID = -8091879091924046844L;
     private final String token;
-    private Date date;
+    private String date;
 
-    public JwtResponse(String jwttoken, Date date) {
+    public JwtResponse(String jwttoken, String date) {
         this.token = jwttoken;
         this.date = date;
     }
@@ -19,6 +19,6 @@ public class JwtResponse implements Serializable {
     public String getToken() {
         return token;
     }
-    public Date getDate(){return  date;}
+    public String getDate(){return  date;}
 }
 

@@ -1,5 +1,6 @@
 package com.project.HealthyCare.entity;
 
+import com.project.HealthyCare.entity.converter.IsActiveConverter;
 import com.project.HealthyCare.po.IsActive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -46,7 +47,7 @@ public class User {
     @Column(name = "identity_id")
     private String identityId;
 
-//    @Convert(converter = IsActiveConverter.class)
+    @Convert(converter = IsActiveConverter.class)
     @Column(name = "is_active" , precision = 1, scale = 0)
     private IsActive isActive;
 

@@ -1,6 +1,5 @@
-package com.project.HealthyCare.common.security;
+package com.project.HealthyCare.security;
 
-import com.project.HealthyCare.entity.User;
 import com.project.HealthyCare.service.impl.UserServiceImpl;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;

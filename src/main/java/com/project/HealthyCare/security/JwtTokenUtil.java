@@ -1,4 +1,4 @@
-package com.project.HealthyCare.common.security;
+package com.project.HealthyCare.security;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,8 +19,6 @@ import org.springframework.stereotype.Component;
 public class JwtTokenUtil implements Serializable {
     private static final long serialVersionUID = -2550185165626007488L;
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
-    private static final String SECRET_KEY = "11111111111111111111111111111111";
-    public static final String USERNAME = "username";
 
     @Autowired
     private Environment env;
@@ -30,7 +28,7 @@ public class JwtTokenUtil implements Serializable {
         try {
             JWSSigner signer = new MACSigner(generateShareSecret());
             JWTClaimsSet.Builder builder = new JWTClaimsSet.Builder();
-            builder.claim(USERNAME, username);
+            builder.claim(env.getProperty("username"), username);
             builder.expirationTime(generateExpirationDate());
             JWTClaimsSet claimsSet = builder.build();
             SignedJWT signedJWT = new SignedJWT(new JWSHeader(JWSAlgorithm.HS256), claimsSet);
@@ -44,7 +42,7 @@ public class JwtTokenUtil implements Serializable {
     }
 
     private Date generateExpirationDate() {
-        int time = Integer.parseInt(String.valueOf(1)) * 60 * 1000;
+        int time = Integer.parseInt(String.valueOf(10)) * 60 * 1000;
         return new Date(System.currentTimeMillis() + time);
     }
 
@@ -65,7 +63,7 @@ public class JwtTokenUtil implements Serializable {
 
     private byte[] generateShareSecret() {
         byte[] shareSecret = new byte[20];
-        shareSecret = SECRET_KEY.getBytes();
+        shareSecret = env.getProperty("secret_key").getBytes();
         return shareSecret;
     }
 
@@ -73,7 +71,7 @@ public class JwtTokenUtil implements Serializable {
         String username =null;
         try {
             JWTClaimsSet claimsSet = getClaimsFromToken(token);
-            username = claimsSet.getStringClaim(USERNAME);
+            username = claimsSet.getStringClaim(env.getProperty("username"));
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();

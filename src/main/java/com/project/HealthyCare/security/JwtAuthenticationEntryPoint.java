@@ -1,4 +1,4 @@
-package com.project.HealthyCare.common.security;
+package com.project.HealthyCare.security;
 
 import java.io.IOException;
 import java.io.Serializable;

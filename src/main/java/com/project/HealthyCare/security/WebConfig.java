@@ -1,4 +1,4 @@
-package com.project.HealthyCare.common.security;
+package com.project.HealthyCare.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

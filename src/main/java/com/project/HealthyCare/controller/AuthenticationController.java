@@ -1,8 +1,8 @@
 package com.project.HealthyCare.controller;
 
-import com.project.HealthyCare.common.security.JBcryptHelper;
-import com.project.HealthyCare.common.security.JwtRequest;
-import com.project.HealthyCare.common.security.JwtResponse;
+import com.project.HealthyCare.security.JBcryptHelper;
+import com.project.HealthyCare.security.JwtRequest;
+import com.project.HealthyCare.security.JwtResponse;
 import com.project.HealthyCare.entity.User;
 import com.project.HealthyCare.util.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
 
-import com.project.HealthyCare.common.security.JwtTokenUtil;
+import com.project.HealthyCare.security.JwtTokenUtil;
 import com.project.HealthyCare.service.impl.UserServiceImpl;
 
 @RestController

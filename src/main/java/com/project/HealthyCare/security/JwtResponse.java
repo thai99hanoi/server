@@ -1,9 +1,6 @@
-package com.project.HealthyCare.common.security;
-
-import lombok.*;
+package com.project.HealthyCare.security;
 
 import java.io.Serializable;
-import java.util.Date;
 
 
 public class JwtResponse implements Serializable {

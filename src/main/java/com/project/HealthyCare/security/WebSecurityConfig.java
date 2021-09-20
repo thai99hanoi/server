@@ -1,4 +1,4 @@
-package com.project.HealthyCare.common.security;
+package com.project.HealthyCare.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.project.HealthyCare.common.base.BaseRepository;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Repository
 public interface UserRepository extends BaseRepository<User> {
@@ -27,4 +28,10 @@ public interface UserRepository extends BaseRepository<User> {
     @Transactional
     @Query(value = "UPDATE user SET is_active = 0 WHERE user_id = :userId and is_active = 1",nativeQuery = true)
     void deleteUser(@Param("userId") int userId);
+
+    @Transactional
+    @Query(value = "SELECT * FROM user\n" +
+            "where user_id != :userId and is_active = 1 and is_online = 1", nativeQuery = true)
+    List<User> getUserOnline(@Param("userId") int userId);
+
 }

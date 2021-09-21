@@ -5,19 +5,18 @@ import com.project.HealthyCare.PersistentEnums;
 
 import java.util.Map;
 
-public enum Status implements PersistentEnum<Byte> {
-    PASS((byte) 1, "PASS"),
-    NOTPASS((byte) 0, "NOTPASS");
+public enum IsOnline implements PersistentEnum<Byte> {
+    ONLINE((byte) 1, "ONLINE"),
+    OFFLINE((byte) 0, "OFFLINE");
 
-    private static final Map<Byte, Status> INDEX = PersistentEnums.index(Status.class);
+    private static final Map<Byte, IsOnline> INDEX = PersistentEnums.index(IsOnline.class);
     private final byte value;
     private final String displayName;
 
-    private Status(byte value, String displayName) {
+    private IsOnline(byte value, String displayName) {
         this.value = value;
         this.displayName = displayName;
     }
-
     @Override
     public Byte getValue() {
         return this.value;
@@ -29,19 +28,19 @@ public enum Status implements PersistentEnum<Byte> {
     }
 
     @Override
-    public Map<Byte, Status> getAll() {
+    public Map<Byte, IsOnline> getAll() {
         return INDEX;
     }
 
-    public boolean isPass() {
-        return this == PASS;
+    public boolean isOnline() {
+        return this == ONLINE;
     }
 
-    public boolean isNotPass() {
-        return this == NOTPASS;
+    public boolean isOffline() {
+        return this == OFFLINE;
     }
 
-    public static Status parse(Byte value) {
+    public static IsOnline parse(Byte value) {
         return value == null ? null : INDEX.get(value);
     }
 }

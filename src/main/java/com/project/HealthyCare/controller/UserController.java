@@ -4,12 +4,9 @@ import com.project.HealthyCare.common.base.ServiceResponse;
 import com.project.HealthyCare.entity.User;
 import com.project.HealthyCare.service.impl.AccountServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
@@ -30,5 +27,10 @@ public class UserController {
     @PostMapping("/delete")
     public ServiceResponse<Boolean> deleteUser(@RequestParam("userId") int userId){
         return userService.deleteUser(userId);
+    }
+
+    @GetMapping("/users-online")
+    public ServiceResponse<List<User>> getUserIsOnline (@RequestParam("userId") int userId){
+        return  userService.getUserOnline(userId);
     }
 }

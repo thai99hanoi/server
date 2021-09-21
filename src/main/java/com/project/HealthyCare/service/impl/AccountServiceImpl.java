@@ -13,6 +13,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class AccountServiceImpl extends BaseServiceImpl<User, UserRepository> {
@@ -98,6 +100,17 @@ public class AccountServiceImpl extends BaseServiceImpl<User, UserRepository> {
         } catch (Exception ex){
             logger.error("Exception: ", ex);
             return new ServiceResponse<Boolean>(MessageCode.FAILED, false);
+        }
+    }
+
+    public ServiceResponse<List<User>> getUserOnline (int userId){
+        try{
+            List<User> usersOnline = userRepository.getUserOnline(userId);
+            if(!usersOnline.isEmpty()) return new ServiceResponse<List<User>>(MessageCode.SUCCESS, usersOnline);
+            else return new ServiceResponse<List<User>>(MessageCode.FAILED, null);
+        } catch (Exception ex){
+            logger.error("Exception: ", ex);
+            return new ServiceResponse<List<User>>(MessageCode.FAILED, null);
         }
     }
 }

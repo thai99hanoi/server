@@ -19,11 +19,12 @@ import org.springframework.stereotype.Component;
 public class JwtTokenUtil implements Serializable {
     private static final long serialVersionUID = -2550185165626007488L;
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+    private static final String SECRET_KEY = "11111111111111111111111111111111" ;
 
     @Autowired
     private Environment env;
 
-    public String generateTokenLogin(String username, String password) {
+    public String generateTokenLogin(String username) {
         String token =null;
         try {
             JWSSigner signer = new MACSigner(generateShareSecret());
@@ -63,7 +64,7 @@ public class JwtTokenUtil implements Serializable {
 
     private byte[] generateShareSecret() {
         byte[] shareSecret = new byte[20];
-        shareSecret = env.getProperty("secret_key").getBytes();
+        shareSecret = SECRET_KEY.getBytes();
         return shareSecret;
     }
 

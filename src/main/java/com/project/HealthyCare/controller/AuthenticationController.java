@@ -47,7 +47,7 @@ public class AuthenticationController {
                 String hash = BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(12));
                 boolean valuate = BCrypt.checkpw(user.getPassword(), hash);
                 if (valuate) {
-                    final String token = jwtTokenUtil.generateTokenLogin(user.getUsername(), user.getPassword());
+                    final String token = jwtTokenUtil.generateTokenLogin(user.getUsername());
                     return ResponseEntity.ok(new JwtResponse(token, DateUtil.dateToString(jwtTokenUtil.getExpirationDateFromToken(token))));
                 } else {
                     return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);

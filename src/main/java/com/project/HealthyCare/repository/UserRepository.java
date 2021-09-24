@@ -34,4 +34,5 @@ public interface UserRepository extends BaseRepository<User> {
             "where user_id != :userId and is_active = 1 and is_online = 1", nativeQuery = true)
     List<User> getUserOnline(@Param("userId") int userId);
 
+
 }

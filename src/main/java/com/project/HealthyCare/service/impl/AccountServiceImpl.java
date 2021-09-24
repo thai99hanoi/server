@@ -77,13 +77,18 @@ public class AccountServiceImpl extends BaseServiceImpl<User, UserRepository> {
      * @return
      */
     public ServiceResponse<User> updateUser(User user){
-        User userExist = userRepository.findByUsername(user.getUsername());
-        if(userExist != null){
-            userExist.setEmail(user.getEmail());
-            userExist.setPhone(user.getPhone());
-            userRepository.save(userExist);
-            return new ServiceResponse<User>(MessageCode.SUCCESS, userExist);
-        } else {
+        try {
+            User userExist = userRepository.findByUsername(user.getUsername());
+            if (userExist != null) {
+                userExist.setEmail(user.getEmail());
+                userExist.setPhone(user.getPhone());
+                userRepository.save(userExist);
+                return new ServiceResponse<User>(MessageCode.SUCCESS, userExist);
+            } else {
+                return new ServiceResponse<User>(MessageCode.FAILED, null);
+            }
+        } catch (Exception ex){
+            logger.error("Error: " , ex);
             return new ServiceResponse<User>(MessageCode.FAILED, null);
         }
     }

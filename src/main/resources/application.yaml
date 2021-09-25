@@ -11,5 +11,6 @@ jpa:
     naming:
       implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
       physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
-
 jwt.secret: company
+secret_key: 11111111111111111111111111111111
+username: username

@@ -14,8 +14,8 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "station_contact", schema = "healthcaresystem", catalog = "")
-public class StationContact {
+@Table(name = "medical_staff_contact", schema = "healthcaresystem", catalog = "")
+public class MedicalStaffContact {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "contact_id")
@@ -24,13 +24,13 @@ public class StationContact {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "station_id")
+    @Column(name = "medical_staff_id")
     private Integer stationId;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "station_role_id")
+    @Column(name = "medical_staff_role_id")
     private Integer stationRoleId;
 
     @Convert(converter = IsActiveConverter.class)

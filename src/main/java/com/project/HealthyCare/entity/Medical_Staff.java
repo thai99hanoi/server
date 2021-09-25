@@ -1,5 +1,7 @@
 package com.project.HealthyCare.entity;
 
+import com.project.HealthyCare.entity.converter.IsActiveConverter;
+import com.project.HealthyCare.po.IsActive;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +15,11 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "station", schema = "healthcaresystem", catalog = "")
-public class Station {
+@Table(name = "medical_staff", schema = "healthcaresystem", catalog = "")
+public class Medical_Staff {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "station_id")
+    @Column(name = "medical_staff_id")
     private Integer stationId;
 
     @Column(name = "name")
@@ -31,4 +33,8 @@ public class Station {
 
     @Column(name = "province_id")
     private Integer provinceId;
+
+    @Convert(converter = IsActiveConverter.class)
+    @Column(name = "is_active" , precision = 1, scale = 0)
+    private IsActive isActive;
 }

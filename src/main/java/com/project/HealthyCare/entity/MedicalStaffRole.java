@@ -14,11 +14,11 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "station_role", schema = "healthcaresystem", catalog = "")
-public class StationRole {
+@Table(name = "medical_staff_role", schema = "healthcaresystem", catalog = "")
+public class MedicalStaffRole {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "station_role_id")
+    @Column(name = "medical_staff_role_id")
     private Integer stationRoleId;
 
     @Column(name = "name")

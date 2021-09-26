@@ -1,10 +1,12 @@
-package com.project.HealthyCare.entity.converter;
+package com.project.HealthyCare.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import java.io.Serializable;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -13,7 +15,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @AllArgsConstructor
 @Entity
 @Table(name = "user_info", schema = "healthcaresystem", catalog = "")
-public class UserInfo {
+public class UserInfo implements Serializable {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "user_info_id")

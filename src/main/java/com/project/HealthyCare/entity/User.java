@@ -27,8 +27,8 @@ public class User {
     @Column(name = "role_Id")
     private Integer roleId;
 
-    @Column(name = "station_Id")
-    private Integer stationId;
+    @Column(name = "medical_staff_Id")
+    private Integer medicalStaffId;
 
     @Column(name = "username")
     private String username;

@@ -25,13 +25,13 @@ public class MedicalStaffContact {
     private String name;
 
     @Column(name = "medical_staff_id")
-    private Integer stationId;
+    private Integer medicalStaffId;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
     @Column(name = "medical_staff_role_id")
-    private Integer stationRoleId;
+    private Integer medicalStaffRoleId;
 
     @Convert(converter = IsActiveConverter.class)
     @Column(name = "is_active" , precision = 1, scale = 0)

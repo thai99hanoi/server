@@ -20,7 +20,7 @@ public class Medical_Staff {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "medical_staff_id")
-    private Integer stationId;
+    private Integer medicalStaffId;
 
     @Column(name = "name")
     private String name;

@@ -14,17 +14,21 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "medical_staff_role", schema = "healthcaresystem", catalog = "")
-public class MedicalStaffRole {
+@Table(name = "hospital", schema = "healthcaresystem", catalog = "")
+public class Hospital {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "medical_staff_role_id")
-    private Integer medicalStaffRoleId;
+    @Column(name = "hospital_id")
+    private Integer hospitalId;
 
     @Column(name = "name")
     private String name;
 
+    @Column(name = "address")
+    private String address;
+
     @Convert(converter = IsActiveConverter.class)
     @Column(name = "is_active" , precision = 1, scale = 0)
     private IsActive isActive;
+
 }

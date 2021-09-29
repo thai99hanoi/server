@@ -24,8 +24,9 @@ public class District {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "province_Id")
-    private Integer provinceId;
+    @ManyToOne
+    @JoinColumn(name = "province_id", nullable = false)
+    private Province province;
 
     @Convert(converter = IsActiveConverter.class)
     @Column(name = "is_active" , precision = 1, scale = 0)

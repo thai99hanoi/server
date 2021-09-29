@@ -30,4 +30,8 @@ public class Symptom {
     @Convert(converter = IsActiveConverter.class)
     @Column(name = "is_active" , precision = 1, scale = 0)
     private IsActive isActive;
+
+    @ManyToOne
+    @JoinColumn(name = "symton_report_id")
+    private SymptomReport symtonReport;
 }

@@ -14,27 +14,26 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "medical_staff_contact", schema = "healthcaresystem", catalog = "")
-public class MedicalStaffContact {
+@Table(name = "medical_staff", schema = "healthcaresystem", catalog = "")
+public class MedicalStaff {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "contact_id")
-    private Integer contactId;
-
-    @Column(name = "name")
-    private String name;
-
     @Column(name = "medical_staff_id")
     private Integer medicalStaffId;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;
 
-    @Column(name = "medical_staff_role_id")
-    private Integer medicalStaffRoleId;
+    @OneToOne
+    @JoinColumn(name = "medical_unit_id", referencedColumnName = "medical_unit_id")
+    private MedicalUnit medicalUnit;
+
+    @OneToOne
+    @JoinColumn(name = "hospital_id", referencedColumnName = "hospital_id")
+    private Hospital hospital;
 
     @Convert(converter = IsActiveConverter.class)
     @Column(name = "is_active" , precision = 1, scale = 0)
     private IsActive isActive;
-
 }

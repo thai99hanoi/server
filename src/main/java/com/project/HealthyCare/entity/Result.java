@@ -26,11 +26,13 @@ public class Result {
     @Column(name = "result_id")
     private Integer resultId;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @Column(name = "unit_send_id")
-    private Integer unitSendId;
+    @ManyToOne
+    @JoinColumn(name = "unit_id", nullable = false)
+    private Unit unitId;
 
     @Column(name = "number_test")
     private Integer numberTest;
@@ -51,8 +53,9 @@ public class Result {
     @Column(name = "test_date")
     private Timestamp testDate;
 
-    @Column(name = "sample_type_id")
-    private Integer sampleTypeId;
+    @ManyToOne
+    @JoinColumn(name = "type_id", nullable = false)
+    private SampleType sampleType;
 
     @Convert(converter = StatusConverter.class)
     @Column(name = "status", precision = 1, scale = 0)

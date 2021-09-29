@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -22,8 +23,12 @@ public class SymptomReport {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "id_user")
-    private Integer idUser;
+    @OneToMany(mappedBy = "symptonReport")
+    private List<User> users;
+
+    @OneToMany(mappedBy="symtonReport")
+    private List<Symptom> symptoms;
+
 
     @Column(name = "id_symptom")
     private Integer idSymptom;

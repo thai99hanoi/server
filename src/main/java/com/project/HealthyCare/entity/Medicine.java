@@ -28,4 +28,8 @@ public class Medicine {
 
     @Column(name = "thumbnail")
     private String thumbnail;
+
+    @ManyToOne
+    @JoinColumn(name = "medical_report_id")
+    private MedicineReport medicalReport;
 }

@@ -21,36 +21,23 @@ public class UserInfo implements Serializable {
     @Column(name = "user_info_id")
     private Integer userInfoId;
 
-    @Id
-    @Column(name = "user_id")
-    private Integer userId;
+    @OneToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    private User user;
 
-    @Id
     @Column(name = "firstname")
     private String firstname;
 
-    @Id
     @Column(name = "middle_name")
     private String middleName;
 
-    @Id
     @Column(name = "lastname")
     private String lastname;
 
-    @Id
     @Column(name = "address")
     private String address;
 
-    @Id
-    @Column(name = "province")
-    private String province;
-
-    @Id
-    @Column(name = "district")
-    private String district;
-
-    @Id
-    @Column(name = "position")
-    private String position;
+    @Column(name = "is_deleted")
+    private Integer isDeleted;
 
 }

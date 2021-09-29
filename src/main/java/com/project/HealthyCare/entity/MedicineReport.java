@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -22,11 +23,12 @@ public class MedicineReport {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "id_user")
-    private Integer idUser;
 
-    @Column(name = "id_medicine")
-    private Integer idMedicine;
+    @OneToMany(mappedBy = "medicineReport")
+    private List<User> users;
+
+    @OneToMany(mappedBy="medicalReport")
+    private List<Medicine> medicines;
 
 //    @Temporal(TemporalType.DATE)
     @Column(name = "date")

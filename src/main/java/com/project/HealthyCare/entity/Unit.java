@@ -27,14 +27,9 @@ public class Unit {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "village_id")
-    private Integer villageId;
-
-    @Column(name = "district_id")
-    private Integer districtId;
-
-    @Column(name = "province_Id")
-    private Integer provinceId;
+    @ManyToOne
+    @JoinColumn(name = "village_id", nullable = false)
+    private Village village;
 
     @Convert(converter = IsActiveConverter.class)
     @Column(name = "is_active" , precision = 1, scale = 0)

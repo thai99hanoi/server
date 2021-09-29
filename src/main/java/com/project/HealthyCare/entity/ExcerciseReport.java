@@ -22,11 +22,13 @@ public class ExcerciseReport {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id",nullable = false)
+    private User user;
 
-    @Column(name = "exercise_id")
-    private Integer exerciseId;
+    @ManyToOne
+    @JoinColumn(name = "exercise_id", nullable = false)
+    private Excercise exercise;
 
 //    @Temporal(TemporalType.DATE)
     @Column(name = "date")

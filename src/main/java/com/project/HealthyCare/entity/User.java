@@ -24,11 +24,9 @@ public class User {
     @Column(name = "user_id")
     private Integer userId;
 
-    @Column(name = "role_Id")
-    private Integer roleId;
-
-    @Column(name = "medical_staff_Id")
-    private Integer medicalStaffId;
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
     @Column(name = "username")
     private String username;
@@ -36,7 +34,6 @@ public class User {
     @Column(name = "password")
     private String password;
 
-//    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_login")
     private Timestamp lastLogin;
 
@@ -56,5 +53,13 @@ public class User {
     @Convert(converter = IsOnlineConverter.class)
     @Column(name = "is_online" , precision = 1, scale = 0)
     private IsOnline isOnline;
+
+    @ManyToOne
+    @JoinColumn(name = "medicine_report_id")
+    private MedicineReport medicineReport;
+
+    @ManyToOne
+    @JoinColumn(name = "sympton_report_id")
+    private SymptomReport symptonReport;
 
 }

@@ -23,8 +23,9 @@ public class DailyReport {
     @Column(name = "daily_report_id")
     private Integer dailyReportId;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
 //    @Temporal(TemporalType.DATE)
     @Column(name = "date")

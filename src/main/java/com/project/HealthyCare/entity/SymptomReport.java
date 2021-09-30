@@ -23,15 +23,11 @@ public class SymptomReport {
     @Column(name = "id")
     private Integer id;
 
-    @OneToMany(mappedBy = "symptonReport")
+    @OneToMany(mappedBy = "symptomReport")
     private List<User> users;
 
-    @OneToMany(mappedBy="symtonReport")
+    @OneToMany(mappedBy = "symptomReport")
     private List<Symptom> symptoms;
-
-
-    @Column(name = "id_symptom")
-    private Integer idSymptom;
 
 //    @Temporal(TemporalType.DATE)
     @Column(name = "date")

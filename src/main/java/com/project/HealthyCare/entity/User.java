@@ -17,7 +17,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "unit", schema = "healthcaresystem", catalog = "")
+@Table(name = "user", schema = "healthcaresystem", catalog = "")
 public class User {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -60,6 +60,6 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "sympton_report_id")
-    private SymptomReport symptonReport;
+    private SymptomReport symptomReport;
 
 }

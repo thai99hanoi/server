@@ -32,6 +32,14 @@ public class Symptom {
     private IsActive isActive;
 
     @ManyToOne
-    @JoinColumn(name = "symton_report_id")
-    private SymptomReport symtonReport;
+    @JoinColumn(name = "symptom_report_id")
+    private SymptomReport symptomReport;
+
+    public SymptomReport getSymptomReport() {
+        return symptomReport;
+    }
+
+    public void setSymptomReport(SymptomReport symptomReport) {
+        this.symptomReport = symptomReport;
+    }
 }

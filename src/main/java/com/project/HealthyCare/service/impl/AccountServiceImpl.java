@@ -1,6 +1,5 @@
 package com.project.HealthyCare.service.impl;
 
-import com.project.HealthyCare.common.base.BaseServiceImpl;
 import com.project.HealthyCare.common.base.ServiceResponse;
 import com.project.HealthyCare.common.constant.MessageCode;
 import com.project.HealthyCare.entity.User;
@@ -17,16 +16,12 @@ import java.util.List;
 
 
 @Service
-public class AccountServiceImpl extends BaseServiceImpl<User, UserRepository> {
+public class AccountServiceImpl {
 
     @Autowired
     private UserRepository userRepository;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    public AccountServiceImpl(UserRepository repository) {
-        super(repository);
-    }
 
     /**
      * @Description: get current user

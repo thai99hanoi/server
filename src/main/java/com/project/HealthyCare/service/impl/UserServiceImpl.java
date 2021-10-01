@@ -7,17 +7,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.project.HealthyCare.common.base.BaseServiceImpl;
 import com.project.HealthyCare.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 @Service
-public class UserServiceImpl extends BaseServiceImpl<User, UserRepository> implements UserDetailsService {
-    public UserServiceImpl(UserRepository repository) {
-        super(repository);
-    }
+public class UserServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
@@ -46,5 +42,4 @@ public class UserServiceImpl extends BaseServiceImpl<User, UserRepository> imple
         return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),new ArrayList<>());
         return null;
     }
-
 }

@@ -2,19 +2,22 @@ package com.project.HealthyCare.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Objects;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "excercise", schema = "healthcaresystem", catalog = "")
-public class Excercise {
+@Table(name = "exercise", schema = "healthcaresystem")
+public class Exercise {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")

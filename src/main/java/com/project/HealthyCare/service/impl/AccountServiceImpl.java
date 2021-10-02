@@ -3,6 +3,7 @@ package com.project.HealthyCare.service.impl;
 import com.project.HealthyCare.common.base.ServiceResponse;
 import com.project.HealthyCare.common.constant.MessageCode;
 import com.project.HealthyCare.entity.User;
+import com.project.HealthyCare.entity.dto.AccountDTO;
 import com.project.HealthyCare.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -70,25 +71,16 @@ public class AccountServiceImpl {
     }
 
     /**
-     * @Description: update user
-     * @param user
-     * @return
-     */
-    public ServiceResponse<User> updateUser(User user){
-        try {
-            User userExist = userRepository.findByUsername(user.getUsername());
-            if (userExist != null) {
-                userExist.setEmail(user.getEmail());
-                userExist.setPhone(user.getPhone());
-                userRepository.save(userExist);
-                return new ServiceResponse<User>(MessageCode.SUCCESS, userExist);
-            } else {
-                return new ServiceResponse<User>(MessageCode.FAILED, null);
-            }
-        } catch (Exception ex){
-            logger.error("Error: " , ex);
-            return new ServiceResponse<User>(MessageCode.FAILED, null);
+     * @Description: create new user
+     * */
+    public ServiceResponse<AccountDTO> createUser(AccountDTO accountDTO){
+        try{
+
+        }catch (Exception ex){
+            logger.error(ex.getMessage());
+            return new ServiceResponse<AccountDTO>(MessageCode.FAILED, null);
         }
+        return new ServiceResponse<AccountDTO>(MessageCode.SUCCESS,null);
     }
 
     /**
@@ -105,7 +97,11 @@ public class AccountServiceImpl {
             return new ServiceResponse<Boolean>(MessageCode.FAILED, false);
         }
     }
-
+    /**
+     * @Description: get all user online
+     * @Param: userId: Integer
+     * @Return
+     * */
     public ServiceResponse<List<User>> getUserOnline (int userId){
         try{
             List<User> usersOnline = userRepository.getUserOnline(userId);
@@ -116,4 +112,6 @@ public class AccountServiceImpl {
             return new ServiceResponse<List<User>>(MessageCode.FAILED, null);
         }
     }
+
+    private 
 }

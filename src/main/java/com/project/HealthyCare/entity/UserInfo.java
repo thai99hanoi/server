@@ -28,14 +28,17 @@ public class UserInfo implements Serializable {
     @Column(name = "firstname")
     private String firstname;
 
-    @Column(name = "middle_name")
-    private String middleName;
+    @Column(name = "surname")
+    private String surname;
 
     @Column(name = "lastname")
     private String lastname;
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "avatar")
+    private String avatar;
 
     @Column(name = "is_deleted")
     private Integer isDeleted;

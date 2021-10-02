@@ -11,16 +11,15 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-import static javax.persistence.GenerationType.IDENTITY;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "user", schema = "healthcaresystem", catalog = "")
+@Table(name = "user", schema = "healthcaresystem")
 public class User {
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Integer userId;
 
@@ -53,13 +52,4 @@ public class User {
     @Convert(converter = IsOnlineConverter.class)
     @Column(name = "is_online" , precision = 1, scale = 0)
     private IsOnline isOnline;
-
-    @ManyToOne
-    @JoinColumn(name = "medicine_report_id")
-    private MedicineReport medicineReport;
-
-    @ManyToOne
-    @JoinColumn(name = "sympton_report_id")
-    private SymptomReport symptomReport;
-
 }

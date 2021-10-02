@@ -16,18 +16,20 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "symptom_report", schema = "healthcaresystem", catalog = "")
+@Table(name = "symptom_report", schema = "healthcaresystem")
 public class SymptomReport {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id")
     private Integer id;
+    
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @OneToMany(mappedBy = "symptomReport")
-    private List<User> users;
-
-    @OneToMany(mappedBy = "symptomReport")
-    private List<Symptom> symptoms;
+    @ManyToOne
+    @JoinColumn(name = "symptom_id", nullable = false)
+    private Symptom symptom;
 
 //    @Temporal(TemporalType.DATE)
     @Column(name = "date")

@@ -18,10 +18,13 @@ import java.util.List;
 @Service
 public class AccountServiceImpl {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    public AccountServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     /**
      * @Description: get current user

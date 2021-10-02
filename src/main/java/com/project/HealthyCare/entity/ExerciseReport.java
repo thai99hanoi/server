@@ -1,40 +1,39 @@
 package com.project.HealthyCare.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
-import java.util.Objects;
+import java.util.List;
 
-import static javax.persistence.GenerationType.IDENTITY;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "excercise_report", schema = "healthcaresystem", catalog = "")
-public class ExcerciseReport {
+@Table(name = "exercise_report", schema = "healthcaresystem")
+public class ExerciseReport {
     @Id
-    @GeneratedValue(strategy = IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id",nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "exercise_id", nullable = false)
-    private Excercise exercise;
+    private Exercise exercise;
 
-//    @Temporal(TemporalType.DATE)
     @Column(name = "date")
     private Date date;
 
-//    @Temporal(TemporalType.TIME)
     @Column(name = "time")
     private Time time;
 }

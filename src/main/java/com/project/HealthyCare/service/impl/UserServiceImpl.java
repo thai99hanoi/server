@@ -14,8 +14,11 @@ import java.util.Objects;
 
 @Service
 public class UserServiceImpl implements UserDetailsService {
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username, String password) throws UsernameNotFoundException {

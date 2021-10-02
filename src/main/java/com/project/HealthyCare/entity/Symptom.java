@@ -14,7 +14,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "symptom", schema = "healthcaresystem", catalog = "")
+@Table(name = "symptom", schema = "healthcaresystem")
 public class Symptom {
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -31,15 +31,4 @@ public class Symptom {
     @Column(name = "is_active" , precision = 1, scale = 0)
     private IsActive isActive;
 
-    @ManyToOne
-    @JoinColumn(name = "symptom_report_id")
-    private SymptomReport symptomReport;
-
-    public SymptomReport getSymptomReport() {
-        return symptomReport;
-    }
-
-    public void setSymptomReport(SymptomReport symptomReport) {
-        this.symptomReport = symptomReport;
-    }
 }

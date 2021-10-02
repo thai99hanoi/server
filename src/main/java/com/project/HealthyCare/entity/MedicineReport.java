@@ -23,12 +23,13 @@ public class MedicineReport {
     @Column(name = "id")
     private Integer id;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
-    @OneToMany(mappedBy = "medicineReport")
-    private List<User> users;
-
-    @OneToMany(mappedBy="medicalReport")
-    private List<Medicine> medicines;
+    @ManyToOne
+    @JoinColumn(name = "medicine_id", nullable = false)
+    private Medicine medicine;
 
 //    @Temporal(TemporalType.DATE)
     @Column(name = "date")

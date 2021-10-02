@@ -42,8 +42,23 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
-    @Column(name = "identity_id")
-    private String identityId;
+    @Column(name = "identity_card")
+    private String identityCard;
+
+    @Column(name = "firstname")
+    private String firstname;
+
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "lastname")
+    private String lastname;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "avatar")
+    private String avatar;
 
 //    @Convert(converter = IsActiveConverter.class)
     @Column(name = "is_active" , precision = 1, scale = 0)

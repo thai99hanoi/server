@@ -36,7 +36,7 @@ public class MedicalUnit {
     @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
-    @Convert(converter = IsActiveConverter.class)
+//    @Convert(converter = IsActiveConverter.class)
     @Column(name = "is_active" , precision = 1, scale = 0)
-    private IsActive isActive;
+    private Integer isActive;
 }

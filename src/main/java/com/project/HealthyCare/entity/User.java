@@ -45,11 +45,11 @@ public class User {
     @Column(name = "identity_id")
     private String identityId;
 
-    @Convert(converter = IsActiveConverter.class)
+//    @Convert(converter = IsActiveConverter.class)
     @Column(name = "is_active" , precision = 1, scale = 0)
-    private IsActive isActive;
+    private Integer isActive;
 
-    @Convert(converter = IsOnlineConverter.class)
+//    @Convert(converter = IsOnlineConverter.class)
     @Column(name = "is_online" , precision = 1, scale = 0)
-    private IsOnline isOnline;
+    private Integer isOnline;
 }

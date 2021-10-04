@@ -113,5 +113,16 @@ public class AccountServiceImpl {
         }
     }
 
-//    private
+    private User toEntity(AccountDTO accountDTO){
+        User newUser = new User();
+
+        newUser.setUsername(accountDTO.getUsername());
+        newUser.setEmail(accountDTO.getMail());
+        newUser.setPhone(accountDTO.getPhone());
+        newUser.setFirstname(accountDTO.getUsername());
+        newUser.setLastname(accountDTO.getLastname());
+
+
+        return newUser;
+    }
 }

@@ -19,10 +19,10 @@ public class UserController {
         return userService.getCurrentUser();
     }
 
-    @PostMapping("/update")
-    public ServiceResponse<User> updateUser(@RequestBody User user){
-        return userService.updateUser(user);
-    }
+//    @PostMapping("/update")
+//    public ServiceResponse<User> updateUser(@RequestBody User user){
+//        return userService.updateUser(user);
+//    }
 
     @PostMapping("/delete")
     public ServiceResponse<Boolean> deleteUser(@RequestParam("userId") int userId){

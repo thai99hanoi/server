@@ -17,15 +17,8 @@ body {
     font-size: 1rem;
     line-height: 1.58;
     color: #333;
-    /*  background-color: #f4f4f4; */
+    background-color: #f4f4f4;
     height: 100%;
-
-
-
-    /* Center and scale the image nicely */
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 body:before {
@@ -34,7 +27,7 @@ body:before {
     position: absolute;
     top: 0;
     left: 0;
-    /*background: url("/resources/18.jpg");*/
+    background: #128ff2;
     content: "";
     z-index: 0;
 }
@@ -100,13 +93,13 @@ button.default {
 }
 
 button.primary {
-    background-color: #25be38;
+    background-color: #128ff2;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
     color: #fff;
 }
 
 button.accent {
-    background-color: #1778dd;
+    background-color: #ff4743;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12);
     color: #fff;
 }

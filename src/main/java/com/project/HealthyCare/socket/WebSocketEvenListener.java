@@ -11,16 +11,17 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-@Component
-public class WebSocketEventListener {
-    private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
+import static java.lang.String.format;
 
+@Component
+public class WebSocketEvenListener {
+    private static final Logger logger = LoggerFactory.getLogger(WebSocketEvenListener.class);
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
 
     @EventListener
     public void handleWebSocketConnectListener(SessionConnectedEvent event) {
-        logger.info("Received a new web socket connection");
+        logger.info("Received a new web socket connection.");
     }
 
     @EventListener
@@ -28,14 +29,15 @@ public class WebSocketEventListener {
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
 
         String username = (String) headerAccessor.getSessionAttributes().get("username");
-        if(username != null) {
-            logger.info("User Disconnected : " + username);
+        String roomId = (String) headerAccessor.getSessionAttributes().get("room_id");
+        if (username != null) {
+            logger.info("User Disconnected: " + username);
 
             ChatMessage chatMessage = new ChatMessage();
             chatMessage.setType(ChatMessage.MessageType.LEAVE);
             chatMessage.setSender(username);
 
-            messagingTemplate.convertAndSend("/topic/public", chatMessage);
+            messagingTemplate.convertAndSend(format("/channel/%s", roomId), chatMessage);
         }
     }
 }

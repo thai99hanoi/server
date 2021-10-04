@@ -1,7 +1,8 @@
 package com.project.HealthyCare;
 
 
-import com.project.HealthyCare.PersistentEnum;
+
+import sun.misc.SharedSecrets;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -33,7 +34,7 @@ public final class PersistentEnums {
 	 */
 	@SuppressWarnings({ })
 	public static <V, T extends Enum<T> & PersistentEnum<V>> Map<V, T> index(Class<T> clazz) {
-		final T[] constants = sun.misc.SharedSecrets.getJavaLangAccess().getEnumConstantsShared(clazz);
+		final T[] constants = SharedSecrets.getJavaLangAccess().getEnumConstantsShared(clazz);
 		final Map<V, T> r = new HashMap<V, T>();
 		for(T t : constants) r.put(t.getValue(), t);
 		return r;
@@ -42,7 +43,7 @@ public final class PersistentEnums {
 	@SuppressWarnings({ "unchecked" })
 	public static <T extends Enum<T> & PersistentEnum<?>> T parse(Class<T> clazz, Object value) {
 		if(value == null) return null;
-		final T[] constants = sun.misc.SharedSecrets.getJavaLangAccess().getEnumConstantsShared(clazz);
+		final T[] constants = SharedSecrets.getJavaLangAccess().getEnumConstantsShared(clazz);
 		return (constants == null || constants.length == 0) ? null : (T)((PersistentEnum<?>)constants[0]).getAll().get(value);
 	}
 }

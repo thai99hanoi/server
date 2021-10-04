@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/v1/api")
 public class UserController {
     @Autowired
     private AccountServiceImpl userService;
@@ -19,10 +19,10 @@ public class UserController {
         return userService.getCurrentUser();
     }
 
-    @PostMapping("/update")
-    public ServiceResponse<User> updateUser(@RequestBody User user){
-        return userService.updateUser(user);
-    }
+//    @PostMapping("/update")
+//    public ServiceResponse<User> updateUser(@RequestBody User user){
+//        return userService.updateUser(user);
+//    }
 
     @PostMapping("/delete")
     public ServiceResponse<Boolean> deleteUser(@RequestParam("userId") int userId){
@@ -33,4 +33,9 @@ public class UserController {
     public ServiceResponse<List<User>> getUserIsOnline (@RequestParam("userId") int userId){
         return  userService.getUserOnline(userId);
     }
+
+    @GetMapping("/check-username/{username}")
+    public ServiceResponse<Boolean> checkUsername(@PathVariable("username") String username) {
+        return userService.checkUsername(username);
+    };
 }
